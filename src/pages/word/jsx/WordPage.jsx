@@ -12,6 +12,7 @@ const WordPage = () => {
     const [inputValue, setInputValue] = useState(word);
     const [searchWord, setSearchWord] = useState('');
 
+    console.log(info);
     const handleInputChange = (e) => {
         // Convertir el valor ingresado a minúsculas
         const lowerCaseValue = e.target.value.toLowerCase();
@@ -65,7 +66,8 @@ const WordPage = () => {
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <h2 className="text-3xl font-bold mb-4 text-lightText dark:text-darkText">{info.word}</h2>
+                        <h2 className="text-3xl mb-4 text-lightText dark:text-darkText"><strong>Word in English: </strong>[{info.word}]</h2>
+                        {info.phonetic && <p className="text-lg text-lightText dark:text-darkText"><strong>Phonetics: </strong>{info.phonetic}</p>}
                         {info.phonetics.length > 0 && <Phonetics phonetics={info.phonetics} />}
                         {info.meanings.length > 0 && <Meanings meanings={info.meanings} />}
                         {info.sourceUrls && (
