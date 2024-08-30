@@ -32,14 +32,14 @@ const NavbarFloating = () => {
     }, [location.pathname]);
 
     return (
-        <nav className="fixed top-4 left-1/2 -translate-x-1/2 p-2 px-4 rounded-3xl border z-50 bg-lightNavbar text-lightNavbarText dark:bg-darkNavbar dark:text-darkNavbarText dark:border-lightHover border-darkHover navbar-floating">
-            <div className="flex items-center justify-between">
+        <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 p-2 px-4 rounded-3xl border z-50 bg-lightNavbar text-lightNavbarText dark:bg-darkNavbar dark:text-darkNavbarText dark:border-lightHover border-darkHover navbar-floating">
+            <div className="flex items-center justify-between space-x-2">
                 {/* Nombre de la aplicación */}
-                <div className="text-lg md:text-xl font-bold px-2 md:px-3 py-1 md:py-2 mr-2 md:mr-4">
+                <div className="text-sm sm:text-base md:text-lg lg:text-xl font-bold px-2 py-1 mr-2">
                     <Link to="/">English-Helper</Link>
                 </div>
                 {/* Enlaces de navegación */}
-                <div className="flex space-x-2 md:space-x-4">
+                <div className="flex space-x-2">
                     {navigation.map((item) => (
                         <Link
                             key={item.name}
@@ -49,11 +49,11 @@ const NavbarFloating = () => {
                                 item.href === currentPath
                                     ? 'bg-lightText text-lightBg dark:bg-darkText dark:text-darkBg'
                                     : 'text-lightNavbarText dark:text-darkNavbarText hover:bg-lightHover dark:hover:bg-darkBg',
-                                'px-2 py-1 md:px-3 md:py-2 rounded-2xl nav-item'
+                                'px-1 sm:px-2 md:px-3 py-1 rounded-xl sm:rounded-2xl nav-item transition-all duration-200'
                             )}
                             onClick={() => setCurrentPath(item.href)}
                         >
-                            {item.name}
+                            <span className="text-sm sm:text-base md:text-lg">{item.name}</span>
                         </Link>
                     ))}
                 </div>
@@ -61,13 +61,13 @@ const NavbarFloating = () => {
                 <button
                     type="button"
                     onClick={toggleDarkMode}
-                    className='ml-2 md:ml-4 px-2 py-1 md:px-3 md:py-2 rounded-2xl dark:hover:bg-darkBg hover:bg-lightHover toggle-dark-mode'
+                    className='ml-2 px-1 sm:px-2 md:px-3 py-1 rounded-xl sm:rounded-2xl dark:hover:bg-darkBg hover:bg-lightHover toggle-dark-mode transition-all duration-200'
                 >
                     <span className="sr-only">Toggle Dark Mode</span>
                     {darkMode ? (
-                        <SunIcon className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true" />
+                        <SunIcon className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" aria-hidden="true" />
                     ) : (
-                        <MoonIcon className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true" />
+                        <MoonIcon className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" aria-hidden="true" />
                     )}
                 </button>
             </div>
