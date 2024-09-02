@@ -14,7 +14,7 @@ export const translateWord = createAsyncThunk('word/translateWord', async (word)
         headers: { 'Content-Type': 'application/json' }
     });
     const data = await response.json();
-    console.log(data);
+    
     if (response.ok) {
         return data.data.translations[0].translatedText;
     } else {

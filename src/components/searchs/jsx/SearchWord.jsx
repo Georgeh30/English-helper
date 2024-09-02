@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchWordInfo, setWord } from '@store/slice/wordSlice';
+import { saveSearchHistory } from '@store/slice/searchSlice';
 import Phonetics from '@components/phonetics/jsx/Phonetics';
 import Meanings from '@components/meanings/jsx/Meanings';
 import { motion } from 'framer-motion';
@@ -23,7 +24,14 @@ const SearchWord = () => {
         if (inputValue.trim() && !/\s/.test(inputValue)) {
             setSearchWord(inputValue);
             dispatch(setWord(inputValue));
-            dispatch(fetchWordInfo(inputValue));
+            dispatch(fetchWordInfo(inputValue)).then((action) => {
+                if (fetchWordInfo.fulfilled.match(action)) {
+                    const wordInfo = action.payload;
+                    dispatch(saveSearchHistory({ word: inputValue, info: wordInfo }));
+                } else if (fetchWordInfo.rejected.match(action)) {
+                    toast.error("Error al buscar la palabra.");
+                }
+            });
         } else {
             toast.error("Please enter a single word.");
         }

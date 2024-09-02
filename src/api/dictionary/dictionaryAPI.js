@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { translateWord } from '@api/translation/translateAPI';
+import { translateWord } from '@api/translation/translationAPI';
 import { setTranslation } from '@store/slice/wordSlice';
 
 const specializedTerms = ['quantum', 'cryptocurrency', 'nanotechnology']; // Add more as needed

@@ -9,7 +9,7 @@ const WordPage = () => {
 
     return (
         <MainLayout>
-            <div className="p-4 mt-28 mb-6">
+            <div className="p-4 mt-24 mb-6">
                 <div className="word-pages-container max-w-7xl mx-auto">
                     <div className="tabs-container flex justify-center">
                         <div className="tabs flex flex-wrap space-x-2 rounded-full border dark:border-lightHover border-darkHover bg-lightNavbar dark:bg-darkNavbar p-1 max-w-full overflow-x-auto">
